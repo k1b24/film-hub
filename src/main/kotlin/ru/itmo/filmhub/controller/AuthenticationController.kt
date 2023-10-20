@@ -1,7 +1,7 @@
 package ru.itmo.filmhub.controller
 
 import org.springframework.http.HttpStatus
-import org.springframework.security.core.Authentication
+//import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,18 +13,18 @@ import ru.itmo.filmhub.model.request.UserRegisterRequest
 @RequestMapping("/user")
 class AuthenticationController {
 
-    @PostMapping("/register")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    suspend fun register(
-        @RequestBody userRegisterRequest: UserRegisterRequest,
-    ) {
-        throw NotImplementedError()
-    }
-
-    @PostMapping("/auth")
-    suspend fun auth(
-        authentication: Authentication,
-    ): String {
-        throw NotImplementedError()
-    }
+//    @PostMapping("/register")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    suspend fun register(
+//        @RequestBody userRegisterRequest: UserRegisterRequest,
+//    ) {
+//        throw NotImplementedError()
+//    }
+//
+//    @PostMapping("/auth")
+//    suspend fun auth(
+//        authentication: Authentication,
+//    ): String {
+//        throw NotImplementedError()
+//    }
 }
