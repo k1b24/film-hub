@@ -40,7 +40,7 @@ class ScreenContentController(
         throw NotImplementedError()
     }
 
-    @GetMapping("/person/{personId}/related-content/")
+    @GetMapping("/person/{personId}/related-content")
     suspend fun getPersonRelatedContent(
         @PathVariable personId: UUID,
     ): List<MovieCardResponse> {

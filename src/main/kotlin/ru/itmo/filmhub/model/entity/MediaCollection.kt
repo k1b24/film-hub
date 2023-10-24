@@ -5,12 +5,13 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "collections")
-data class MediaCollection(
+class MediaCollection(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: UUID? = null,
-    @Column
-    var name: String,
-    var description: String,
+    val id: UUID? = null,
+    val name: String,
+    val description: String,
+    @ManyToMany(mappedBy = "includedIn")
+    val movies: MutableList<Movie> = mutableListOf(),
 
 )
