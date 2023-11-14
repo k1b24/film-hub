@@ -74,10 +74,10 @@ CREATE TABLE IF NOT EXISTS users
     login           VARCHAR(128) NOT NULL,
     password        VARCHAR(128) NOT NULL,
     phone_number    VARCHAR(20)  NOT NULL,
-    CONSTRAINT email_correctness_constraint
-        CHECK (email ~ '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'),
-    CONSTRAINT phone_number_correctness_constraint
-        CHECK (phone_number ~ '^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'),
+--     CONSTRAINT email_correctness_constraint
+--         CHECK (email ~ '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'),
+--     CONSTRAINT phone_number_correctness_constraint
+--         CHECK (phone_number ~ '^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'),
     CONSTRAINT subscription_id_fk
         FOREIGN KEY (subscription_id)
             REFERENCES subscriptions (id)
@@ -107,18 +107,18 @@ CREATE TABLE IF NOT EXISTS reviews
 CREATE TABLE IF NOT EXISTS movies_actors
 (
     movie_id       UUID NOT NULL,
-    personality_id UUID NOT NULL,
+    actor_id UUID NOT NULL,
     CONSTRAINT movies_actors_pk
-        PRIMARY KEY (movie_id, personality_id),
+        PRIMARY KEY (movie_id, actor_id),
     CONSTRAINT movie_id_fk
         FOREIGN KEY (movie_id)
             REFERENCES movies (id),
     CONSTRAINT personalities_id_fk
-        FOREIGN KEY (personality_id)
+        FOREIGN KEY (actor_id)
             REFERENCES personalities (id)
 );
 
-CREATE TABLE IF NOT EXISTS movies_avialabilities_by_subscriptions
+CREATE TABLE IF NOT EXISTS movies_availabilities_by_subscriptions
 (
     subscription_id UUID NOT NULL,
     movie_id        UUID NOT NULL,

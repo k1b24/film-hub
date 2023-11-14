@@ -10,3 +10,4 @@ drop table studios;
 drop table personalities;
 drop table genres;
 drop table collections;
+drop type country_name;
