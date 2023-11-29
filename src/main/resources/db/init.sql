@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS movies
     kinopoisk_id INT,
     director_id  UUID         NOT NULL,
     studio_id    UUID         NOT NULL,
+    local_movie_rating FLOAT DEFAULT 0,
     CONSTRAINT director_id_fk
         FOREIGN KEY (director_id)
             REFERENCES personalities (id),
@@ -39,6 +40,15 @@ CREATE TABLE IF NOT EXISTS movies
     CONSTRAINT kinopoisk_id_min_constraint
         CHECK (kinopoisk_id >= 0)
 );
+
+CREATE OR REPLACE FUNCTION process_movie_rating_by_new_reviews_addition() RETURNS TRIGGER AS $$
+    BEGIN
+        IF (TG_OP = 'DELETE' OR TG_OP = 'INSERT' OR TG_OP = 'UPDATE') THEN
+            UPDATE movies SET local_movie_rating = (SELECT AVG(rating) FROM reviews WHERE movie_id = new.movie_id) WHERE new.movie_id = movies.id;
+        END IF;
+        RETURN NULL;
+    END;
+$$ LANGUAGE plpgsql;
 
 CREATE INDEX ON movies (release_date);
 
@@ -101,6 +111,10 @@ CREATE TABLE IF NOT EXISTS reviews
     CONSTRAINT rating_max_and_min_constraint
         CHECK ( rating >= 0 AND rating <= 5 )
 );
+
+CREATE TRIGGER movie_rating
+    AFTER INSERT OR DELETE ON reviews
+        FOR EACH ROW EXECUTE PROCEDURE process_movie_rating_by_new_reviews_addition();
 
 
 
