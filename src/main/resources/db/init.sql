@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS reviews
 );
 
 CREATE TRIGGER movie_rating
-    AFTER INSERT OR DELETE ON reviews
+    AFTER INSERT OR DELETE OR UPDATE ON reviews
         FOR EACH ROW EXECUTE PROCEDURE process_movie_rating_by_new_reviews_addition();
 
 
