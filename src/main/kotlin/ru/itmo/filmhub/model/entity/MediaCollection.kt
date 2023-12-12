@@ -1,17 +1,18 @@
 package ru.itmo.filmhub.model.entity
 
-import java.util.UUID
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 
 @Entity
 @Table(name = "collections")
-class MediaCollection(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: UUID? = null,
-    val name: String,
-    val description: String,
-    @ManyToMany(mappedBy = "includedIn")
-    val movies: MutableList<Movie> = mutableListOf(),
-
-)
+data class MediaCollection(
+    @Column(name = "name", nullable = false)
+    var name: String? = null,
+    @Column(name = "description", nullable = false)
+    var description: String? = null,
+    @JsonIgnore
+    @ManyToMany(mappedBy = "includedIn", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    val movies: MutableList<Movie> = mutableListOf()
+) : BaseEntity()

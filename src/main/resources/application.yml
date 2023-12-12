@@ -1,12 +1,20 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/film_hub?useSSL=false
-    username: pimp
-    password: arianagrenade
+    url: jdbc:postgresql://localhost:5432/postgres?useSSL=false
+    username: busygind02
+#    password: arianagrenade
 
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: info

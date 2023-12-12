@@ -7,19 +7,19 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "users")
-class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: UUID,
+data class User(
     @ManyToOne
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
-    val subscription: Subscription?,
-    val name: String,
-    val email: String,
-    val login: String,
-    val password: String,
+    val subscription: Subscription? = null,
+    @Column(nullable = false)
+    val name: String? = null,
+    @Column(nullable = false)
+    val email: String? = null,
+    @Column(nullable = false)
+    val login: String? = null,
+    @Column(nullable = false)
+    val password: String? = null,
     @Column(name = "phone_number")
-    val phoneNumber: String?,
-
-)
+    val phoneNumber: String? = null,
+) : BaseEntity()

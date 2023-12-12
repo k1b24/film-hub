@@ -1,18 +1,15 @@
 package ru.itmo.filmhub.model.entity
 
-import java.util.UUID
+import com.fasterxml.jackson.annotation.JsonBackReference
 import javax.persistence.*
 
 @Entity
 @Table(name = "subscriptions")
-class Subscription(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: UUID,
-    val name: String,
-    val price: Int,
-    val description: String,
+data class Subscription(
+    val name: String = "",
+    val price: Int = 0,
+    val description: String = "",
     @ManyToMany(mappedBy = "validSubscriptions")
+    @JsonBackReference
     val availableMovies: MutableList<Movie> = mutableListOf(),
-
-)
+) : BaseEntity()
