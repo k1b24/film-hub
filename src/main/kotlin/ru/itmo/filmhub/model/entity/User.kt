@@ -2,7 +2,6 @@ package ru.itmo.filmhub.model.entity
 
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
-import java.util.UUID
 import javax.persistence.*
 
 @Entity
@@ -11,7 +10,7 @@ data class User(
     @ManyToOne
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
-    val subscription: Subscription? = null,
+    var subscription: Subscription? = null,
     @Column(nullable = false)
     val name: String? = null,
     @Column(nullable = false)

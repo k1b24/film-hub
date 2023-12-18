@@ -1,6 +1,8 @@
 package ru.itmo.filmhub.service
 
 import org.springframework.stereotype.Service
+import ru.itmo.filmhub.mappers.toEntity
+import ru.itmo.filmhub.messages.AddGenreRequest
 import ru.itmo.filmhub.model.entity.Genre
 import ru.itmo.filmhub.model.entity.Movie
 import ru.itmo.filmhub.repository.GenreRepository
@@ -11,7 +13,12 @@ import java.util.UUID
 class GenreService(
     val genreRepository: GenreRepository,
     val movieRepository: MovieRepository,
+
 ) {
+    fun saveGenre(addGenreRequest: AddGenreRequest): Genre {
+        return genreRepository.save(addGenreRequest.toEntity())
+    }
+
     fun getAllGenres(): List<Genre> {
         return genreRepository.findAll()
     }
