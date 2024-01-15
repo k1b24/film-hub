@@ -1,5 +1,6 @@
 package ru.itmo.filmhub.repository
 
+import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
@@ -27,4 +28,11 @@ interface MovieRepository : JpaRepository<Movie, UUID> {
         """
     )
     fun findAllByGenreId(genreId: UUID): List<Movie>
+
+    @Query(
+        """
+            SELECT m FROM Movie m ORDER BY m.localMovieRating
+        """
+    )
+    fun findPopularByRating(pageable: Pageable): List<Movie>
 }

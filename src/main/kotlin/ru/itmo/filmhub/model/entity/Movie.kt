@@ -38,6 +38,12 @@ data class Movie(
     @Column(name = "kinopoisk_id")
     val kinopoiskId: Int? = 0,
 
+    @Column(name = "local_movie_rating")
+    val localMovieRating: Float? = 0F,
+
+    @Column(name = "cover_url")
+    val coverUrl: String? = null,
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "movies_availabilities_by_subscriptions",

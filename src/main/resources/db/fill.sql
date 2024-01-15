@@ -18,12 +18,12 @@ VALUES ('23af34ea-0e75-4fa2-9cd7-db2beec27094', 'Marvel'),
        ('84650328-f0f8-4221-85b2-10850f3eb054', 'Lions gate films');
 
 
-INSERT INTO movies (id, name, release_date, imdb_rating, kinopoisk_id, director_id, studio_id)
-VALUES ('9a511806-4a24-4f8e-b690-0a4a80dfc691', 'Американский психопат', '2000-01-21', 7.6, 588, '13246c61-d24e-4f1b-a9cf-02eac3333446', '84650328-f0f8-4221-85b2-10850f3eb054'),
-       ('9a511806-4a24-4f8e-b690-0a4a70dfc691', 'Тёмный рыцарь', '2008-07-14', 9.0, 111543, '42dd96f2-aed5-466c-bbc1-de16b3bf4af2', 'a93dd036-0381-47ff-b8bf-494f633cd570'),
-       ('e6229578-5f66-4b1e-b14b-bec4e1ea3a3c', 'Криминальное чтиво', '1994-05-21', 8.9, 342, '3b1f9eed-ddf8-41ca-b171-e5fd39baab77', 'c4061d93-ab75-4c50-981d-3f37d5470982'),
-       ('5ee7476a-e749-4ca9-a9da-67e95b407ed8', 'Джон Уик', '2014-09-19', 7.4, 762738, 'c080e0ae-2d55-41b2-a2fb-73aa46491f22', '84650328-f0f8-4221-85b2-10850f3eb054'),
-       ('6fbee03b-79db-4567-b4db-0af00e4f0be8', 'Человек-паук: Нет пути домой', '2021-12-15', 8.2, 1309570, '14e61c70-63c1-4970-a5a8-5fb73fec3736', '23af34ea-0e75-4fa2-9cd7-db2beec27094');
+INSERT INTO movies (id, name, release_date, imdb_rating, kinopoisk_id, director_id, studio_id, cover_url)
+VALUES ('9a511806-4a24-4f8e-b690-0a4a80dfc691', 'Американский психопат', '2000-01-21', 7.6, 588, '13246c61-d24e-4f1b-a9cf-02eac3333446', '84650328-f0f8-4221-85b2-10850f3eb054', 'https://upload.wikimedia.org/wikipedia/ru/9/9e/American-psycho-poster-0.jpg'),
+       ('9a511806-4a24-4f8e-b690-0a4a70dfc691', 'Тёмный рыцарь', '2008-07-14', 9.0, 111543, '42dd96f2-aed5-466c-bbc1-de16b3bf4af2', 'a93dd036-0381-47ff-b8bf-494f633cd570', 'https://upload.wikimedia.org/wikipedia/ru/thumb/f/f4/Тёмный_рыцарь_%282008%29_постер.jpg/640px-Тёмный_рыцарь_%282008%29_постер.jpg'),
+       ('e6229578-5f66-4b1e-b14b-bec4e1ea3a3c', 'Криминальное чтиво', '1994-05-21', 8.9, 342, '3b1f9eed-ddf8-41ca-b171-e5fd39baab77', 'c4061d93-ab75-4c50-981d-3f37d5470982', 'https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/87b5659d-a159-4224-9bff-d5a5d109a53b/600x900'),
+       ('5ee7476a-e749-4ca9-a9da-67e95b407ed8', 'Джон Уик', '2014-09-19', 7.4, 762738, 'c080e0ae-2d55-41b2-a2fb-73aa46491f22', '84650328-f0f8-4221-85b2-10850f3eb054', 'https://upload.wikimedia.org/wikipedia/ru/e/e5/Джон_Уик.jpg'),
+       ('6fbee03b-79db-4567-b4db-0af00e4f0be8', 'Человек-паук: Нет пути домой', '2021-12-15', 8.2, 1309570, '14e61c70-63c1-4970-a5a8-5fb73fec3736', '23af34ea-0e75-4fa2-9cd7-db2beec27094', 'https://upload.wikimedia.org/wikipedia/ru/6/6e/Spider-Man_—_No_Way_Home_poster.jpg');
 
 INSERT INTO genres (id, name)
 VALUES ('e39ed6a1-4ec2-4912-a616-f9d131d27492', 'Драма'),

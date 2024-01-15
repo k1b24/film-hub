@@ -33,4 +33,7 @@ class MovieController(
     ): ResponseEntity<Movie> {
         return ResponseEntity.status(200).body(service.getMovieById(movieId))
     }
+
+    @GetMapping("/movies/popular")
+    fun getPopularMovies(): ResponseEntity<List<Movie>> = ResponseEntity.status(200).body(service.getPopularMovies())
 }

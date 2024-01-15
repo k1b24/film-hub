@@ -16,4 +16,6 @@ class AddMovieRequest(
     val imdbRating: Int,
     @JsonProperty("kinopoisk_id")
     val kinopoiskId: Int?,
+    @JsonProperty("cover_url")
+    val coverUrl: String,
 )

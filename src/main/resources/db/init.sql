@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS movies
     director_id  UUID         NOT NULL,
     studio_id    UUID         NOT NULL,
     local_movie_rating FLOAT DEFAULT 0,
+    cover_url TEXT,
     CONSTRAINT director_id_fk
         FOREIGN KEY (director_id)
             REFERENCES personalities (id),
