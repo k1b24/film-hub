@@ -44,9 +44,9 @@ VALUES ('e49ed6a1-4ec2-4912-a616-f9d131d27498', 'Минимум', '300', 'Мин
        ('e49ed6a1-4ec2-4912-a616-f9d131d27428', 'Максимум', '500', 'Максимальная подписка');
 
 
-INSERT INTO users (id, subscription_id, name, email, login, password, phone_number)
-VALUES ('4334b468-6879-4b38-9216-bbf0409e3238', 'e49ed6a1-4ec2-4912-a616-f9d131d27418', 'Бусыгин Дмитрий', 'busygind2@yandex.ru', 'busygind2', '12345', '79123068644'),
-       ('4334b468-6879-4b38-9216-bbf0409e3838', 'e49ed6a1-4ec2-4912-a616-f9d131d27428', 'Сущенко Роман', 'rsushe02@yandex.ru', 'rsushe', '12345', '79123068645');
+INSERT INTO users (id, subscription_id, name, email, username, password, enabled, phone_number)
+VALUES ('4334b468-6879-4b38-9216-bbf0409e3238', 'e49ed6a1-4ec2-4912-a616-f9d131d27418', 'Бусыгин Дмитрий', 'busygind2@yandex.ru', 'busygind2', '12345', true, '79123068644'),
+       ('4334b468-6879-4b38-9216-bbf0409e3838', 'e49ed6a1-4ec2-4912-a616-f9d131d27428', 'Сущенко Роман', 'rsushe02@yandex.ru', 'rsushe', '12345', true, '79123068645');
 
 INSERT INTO reviews (id, text, rating, movie_id, author_id)
 VALUES ('175f2ef4-27cc-4527-8913-c5ec273db1bd', 'Классный фильм!', 5, '9a511806-4a24-4f8e-b690-0a4a80dfc691', '4334b468-6879-4b38-9216-bbf0409e3238'),

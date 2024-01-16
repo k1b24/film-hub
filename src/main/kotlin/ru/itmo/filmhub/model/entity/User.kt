@@ -16,9 +16,11 @@ data class User(
     @Column(nullable = false)
     val email: String? = null,
     @Column(nullable = false)
-    val login: String? = null,
+    val username: String? = null,
     @Column(nullable = false)
     val password: String? = null,
+    @Column(nullable = false)
+    val enabled: Boolean? = null,
     @Column(name = "phone_number")
     val phoneNumber: String? = null,
 ) : BaseEntity()

@@ -18,3 +18,7 @@ logging:
     org:
       hibernate:
         SQL: info
+
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
