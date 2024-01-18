@@ -51,7 +51,7 @@ class SecurityConfig(val rsaKeys: RsaKeyProperties) : WebMvcConfigurer {
             .csrf { obj: CsrfConfigurer<HttpSecurity> -> obj.disable() }
             .authorizeRequests { auth ->
                     auth
-                        .antMatchers("/register/**").permitAll()
+                        .antMatchers("/user/register/**").permitAll()
                         .anyRequest().authenticated()
                 }
             .headers { headers: HeadersConfigurer<HttpSecurity?> ->

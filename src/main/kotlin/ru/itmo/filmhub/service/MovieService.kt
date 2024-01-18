@@ -4,9 +4,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import ru.itmo.filmhub.messages.AddMovieRequest
 import ru.itmo.filmhub.model.entity.Movie
-import ru.itmo.filmhub.model.response.MovieId
 import ru.itmo.filmhub.repository.MovieRepository
-import java.awt.print.Pageable
 import java.util.UUID
 
 @Service

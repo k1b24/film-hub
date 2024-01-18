@@ -11,6 +11,6 @@ import javax.persistence.MappedSuperclass
 abstract class BaseEntity {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: UUID? = null
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: UUID = UUID.randomUUID()
 }

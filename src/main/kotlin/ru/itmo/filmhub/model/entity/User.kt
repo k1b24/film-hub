@@ -1,5 +1,6 @@
 package ru.itmo.filmhub.model.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
 import javax.persistence.*
@@ -11,9 +12,9 @@ data class User(
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
     var subscription: Subscription? = null,
-    @Column(nullable = false)
+    @Column
     val name: String? = null,
-    @Column(nullable = false)
+    @Column
     val email: String? = null,
     @Column(nullable = false)
     val username: String? = null,
@@ -21,6 +22,9 @@ data class User(
     val password: String? = null,
     @Column(nullable = false)
     val enabled: Boolean? = null,
-    @Column(name = "phone_number")
+    @Column
     val phoneNumber: String? = null,
+    @OneToMany(cascade = [CascadeType.ALL])
+    @JsonIgnore
+    val authorities: List<UserAuthority> = mutableListOf()
 ) : BaseEntity()

@@ -7,11 +7,11 @@ import java.util.UUID
 class AddMovieRequest(
     val name: String,
     @JsonProperty("director_id")
-    val directorId: UUID?,
+    val directorId: UUID,
     @JsonProperty("release_date")
     val releaseDate: Instant,
     @JsonProperty("studio_id")
-    val studioId: UUID?,
+    val studioId: UUID,
     @JsonProperty("imdb_rating")
     val imdbRating: Int,
     @JsonProperty("kinopoisk_id")

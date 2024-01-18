@@ -1,30 +1,29 @@
 package ru.itmo.filmhub.controller
 
-import org.springframework.http.HttpStatus
-//import org.springframework.security.core.Authentication
+import org.springframework.http.ResponseEntity
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import ru.itmo.filmhub.model.request.UserRegisterRequest
+import ru.itmo.filmhub.model.entity.User
+import ru.itmo.filmhub.messages.UserRegisterRequest
+import ru.itmo.filmhub.service.UserService
+import ru.itmo.filmhub.service.TokenService
 
 @RestController
 @RequestMapping("/user")
-class AuthenticationController {
+class AuthenticationController(
+    private val userService: UserService,
+    private val tokenService: TokenService,
+) {
+    @PostMapping("/register")
+    fun register(
+        @RequestBody userRegisterRequest: UserRegisterRequest,
+    ): ResponseEntity<User> = ResponseEntity.status(200).body(userService.addUser(userRegisterRequest))
 
-//    @PostMapping("/register")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    suspend fun register(
-//        @RequestBody userRegisterRequest: UserRegisterRequest,
-//    ) {
-//        throw NotImplementedError()
-//    }
-//
-//    @PostMapping("/auth")
-//    suspend fun auth(
-//        authentication: Authentication,
-//    ): String {
-//        throw NotImplementedError()
-//    }
+    @PostMapping("/auth")
+    fun auth(
+        authentication: Authentication,
+    ): ResponseEntity<String> = ResponseEntity.status(200).body(tokenService.generateToken(authentication))
 }
