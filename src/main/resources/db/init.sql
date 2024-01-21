@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS movies
     director_id  UUID         NOT NULL,
     studio_id    UUID         NOT NULL,
     local_movie_rating FLOAT DEFAULT 0,
+    cover_url TEXT,
     CONSTRAINT director_id_fk
         FOREIGN KEY (director_id)
             REFERENCES personalities (id),
@@ -81,8 +82,9 @@ CREATE TABLE IF NOT EXISTS users
     subscription_id UUID         NOT NULL,
     name            VARCHAR(128) NOT NULL,
     email           VARCHAR(128) NOT NULL,
-    login           VARCHAR(128) NOT NULL,
+    username        VARCHAR(128) NOT NULL UNIQUE,
     password        VARCHAR(128) NOT NULL,
+    enabled         BOOLEAN      NOT NULL,
     phone_number    VARCHAR(20)  NOT NULL,
 --     CONSTRAINT email_correctness_constraint
 --         CHECK (email ~ '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'),
@@ -93,7 +95,17 @@ CREATE TABLE IF NOT EXISTS users
             REFERENCES subscriptions (id)
 );
 
-CREATE INDEX ON users (login, phone_number);
+CREATE INDEX ON users (username, phone_number);
+
+CREATE TABLE IF NOT EXISTS authorities
+(
+    id          INT PRIMARY KEY,
+    authority   TEXT,
+    username    VARCHAR(128),
+    CONSTRAINT username_fk
+        FOREIGN KEY (username)
+            REFERENCES users (username)
+);
 
 CREATE TABLE IF NOT EXISTS reviews
 (

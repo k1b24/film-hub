@@ -1,12 +1,27 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/film_hub?useSSL=false
-    username: pimp
-    password: arianagrenade
+    url: jdbc:postgresql://localhost:5432/postgres?useSSL=false
+    username: k1b
+    password: deadinside\
 
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: info
+
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
+
+default:
+  default-subscription-id: 20c14c36-e570-4238-8545-52e19e42186d

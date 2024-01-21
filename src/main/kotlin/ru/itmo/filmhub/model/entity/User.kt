@@ -1,25 +1,30 @@
 package ru.itmo.filmhub.model.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
-import java.util.UUID
 import javax.persistence.*
 
 @Entity
 @Table(name = "users")
-class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: UUID,
+data class User(
     @ManyToOne
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
-    val subscription: Subscription?,
-    val name: String,
-    val email: String,
-    val login: String,
-    val password: String,
-    @Column(name = "phone_number")
-    val phoneNumber: String?,
-
-)
+    var subscription: Subscription? = null,
+    @Column
+    val name: String? = null,
+    @Column
+    val email: String? = null,
+    @Column(nullable = false)
+    val username: String? = null,
+    @Column(nullable = false)
+    val password: String? = null,
+    @Column(nullable = false)
+    val enabled: Boolean? = null,
+    @Column
+    val phoneNumber: String? = null,
+    @OneToMany(cascade = [CascadeType.ALL])
+    @JsonIgnore
+    val authorities: List<UserAuthority> = mutableListOf()
+) : BaseEntity()

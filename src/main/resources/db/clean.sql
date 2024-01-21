@@ -1,4 +1,5 @@
 drop table reviews;
+drop table authorities;
 drop table users;
 drop table movies_availabilities_by_subscriptions;
 drop table subscriptions;

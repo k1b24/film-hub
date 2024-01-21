@@ -7,7 +7,8 @@ enum class Country(val ruName: String) {
     KAZAKHSTAN("Казахстан"),
     KYRGYZSTAN("Кыргызстан"),
     RUSSIA("Россия"),
-    USA("США"),
+    US("США"),
+    CA("Канада"),
     UK("Великобритания"),
-
+    UNDEFINED("Неизвестно"),
 }
